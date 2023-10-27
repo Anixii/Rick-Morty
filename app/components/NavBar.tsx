@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import s from "./Header.module.css";
 import Link from "next/link"; 
 import Burger from '../assets/img/menu_24px.svg'
-import Image from "next/image";
+import Image from "next/image"; 
+import close from '../assets/img/close_24px.svg'
 const NavBar = () => {
     const [isToggle, setToggle] = useState(false)
     return (
@@ -15,17 +16,17 @@ const NavBar = () => {
         <li className={s.nav__item}>
           <Link href={"/locations"}>Locations</Link>
         </li>
-        <li className={s.nav__item}>
-          <Link href={"/episodes"}>Episodes</Link>
+        <li className={s.nav__item}> 
+        <Link href={"/episodes"}>Episodes</Link>
         </li> 
       </ul>   
-        <div className={s.burger_menu} onClick={() => setToggle(!isToggle)}><Image alt='burger-menu' src={Burger}/></div>
+        <div className={s.burger_menu} onClick={() => setToggle(!isToggle)}><Image alt='burger-menu' src={isToggle? close : Burger}/></div>
         {isToggle &&  
         <div className={s.burger}> 
             <ul className={s.burger__list}> 
-                <li className={s.burger__item}>Characters</li>
-                <li className={s.burger__item}>Locations</li>
-                <li className={s.burger__item}>Episodes </li>
+                <li className={s.burger__item}><Link className={isToggle ? 'toggled' : ''} href={"/"}>Characters</Link></li>
+                <li className={s.burger__item}><Link href={"/locations"}>Locations</Link></li>
+                <li className={s.burger__item}><Link href={"/episodes"}>Episodes</Link> </li>
             </ul>
         </div>}
 

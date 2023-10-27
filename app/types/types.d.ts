@@ -37,4 +37,10 @@ type Episode = {
     Episode:string 
     character: Array<Charackter> 
     created: string
+} 
+type CharackterParamsFilter = { 
+    params: { 
+        page:string
+    }, 
+    filter?:any
 }

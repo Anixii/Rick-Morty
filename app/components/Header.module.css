@@ -36,21 +36,36 @@
     font-weight: 700;
     line-height: normal;
 } 
-.burger{  
+.burger{   
+    left: 0;
     width: 100%; 
     top:60px;
     position: absolute;
     z-index: 999; 
     display: flex; 
     height: 100vh; 
-    background-color: white; 
-    align-items: center;
-}
-.burger__item{
-    
+    background-color: white;  
+    align-items: flex-start;
 } 
-.burger__list{ 
-    list-style: none; 
+.burger__item a {
+  color: #000;
+  text-decoration: none; 
+  
+  text-align: center;
+  font-family: "Karla",sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+} 
+.burger__list{  
+  width: 100%;
+  height: 40%; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-around;
+    list-style: none;  
+    align-items: center;
     margin: 0;
 }
 @media screen and (max-width:1440px) {
