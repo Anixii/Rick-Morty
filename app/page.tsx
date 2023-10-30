@@ -21,11 +21,10 @@ export const dynamic = 'force-dynamic';
 
 export default async function Home({searchParams}:CharactersPageProps) { 
 
-  
-  const page = (searchParams?.page ?? "1")
-  const characters: TResponse<Charackter> = await getCharacters({params: {
-    page
-    },}) 
+  const charactersInfo: TResponse<Charackter> = await getCharacters({params: {
+    page:'1'
+    },})  
+    const characters = charactersInfo.results
   return (
     <>
       <div className={s.characters__wrapper}>
@@ -34,8 +33,7 @@ export default async function Home({searchParams}:CharactersPageProps) {
             <div className={s.characters__img}>
               <Image className={s.image} alt="Rick&Morty Icon" src={icon} />
             </div>
-            <CharactersInfo characters={characters}/> 
-            <Paginations page={+page} allPage={characters.info.pages}/>
+            <CharactersInfo characters={characters} allPage={charactersInfo.info.pages}/> 
           </main>
         </div>
       </div>

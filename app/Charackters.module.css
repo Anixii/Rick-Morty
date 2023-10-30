@@ -32,7 +32,8 @@
 .characters__filter {
   width: 23.5%;
 }
-.characters__list {
+.characters__list { 
+  width: 100%;
     margin: 3% 0;
     gap: 20px 0;
     display: flex;
