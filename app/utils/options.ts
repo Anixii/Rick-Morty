@@ -11,7 +11,7 @@ export const spaciesOption = [
 export const genderOptions = [ 
     { 
         label: 'Female', 
-        value: 'male'
+        value: 'female'
     },
     { 
         label: 'Male', 
