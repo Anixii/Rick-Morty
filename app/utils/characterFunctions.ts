@@ -7,7 +7,7 @@ export const getCharacters = async () =>{
     });
     
     if (!res.ok) {
-      throw new Error("Failed to fetch data");
+      return 'No data'
     } 
     const data = await res.json() 
     
@@ -25,11 +25,9 @@ export const getCharacters = async () =>{
         revalidate: 0,
       }, 
     })
-    if (!res.ok) {
-      throw new Error("Failed to fetch data");
-    } 
+    // if (!res.ok) {
+    //   throw new Error('Fetch data')
+    // } 
     const data:TResponse<Charackter> = await res.json() 
-    console.log(data);
-    
     return data
   }

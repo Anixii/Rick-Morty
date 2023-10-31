@@ -1,6 +1,7 @@
 type TResponse<T> ={  
     info : TInfo 
-    results: Array<T>
+    results: Array<T> 
+    error? : boolean
 }
 type TInfo = { 
     count: number,

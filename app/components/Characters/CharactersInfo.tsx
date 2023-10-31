@@ -7,10 +7,11 @@ import s from '../../Charackters.module.css'
 import {genderOptions,  spaciesOption, statusOptions} from '../../utils/options'
 import Paginations from './Pagination'
 import {getFilteredCharaters } from '@/app/utils/characterFunctions'
+import NoData from './NoData'
 type CharactersInfoType = { 
   characters: TResponse<Charackter>, 
 }
-const CharactersInfo:FC<CharactersInfoType> = ({characters}) => { 
+const CharactersInfo:FC<CharactersInfoType> = ({characters}) => {  
   const [character, setCharacter] = useState<Array<Charackter>>(characters.results) 
   const [filteredCharacter, setFilteredCharacter] = useState<Array<Charackter>>(characters.results)
   const [currentPage, setCurrentPage] = useState<number>(1) 
@@ -59,7 +60,6 @@ const CharactersInfo:FC<CharactersInfoType> = ({characters}) => {
     setCurrentPage(1)
     setAllPage(data.info.pages)
   } 
-
   return (
     <> 
     <div className={s.characters__search}>
@@ -77,7 +77,7 @@ const CharactersInfo:FC<CharactersInfoType> = ({characters}) => {
               </div>
             </div>
 
-            <div className={s.characters__list}>
+            {filteredCharacter === undefined || filteredCharacter.length === 0 ? <NoData/> : <div className={s.characters__list}>
               {filteredCharacter?.map((item, index) => (
 
                   <div key={index.toString() + item.id} className={s.character}>
@@ -98,7 +98,7 @@ const CharactersInfo:FC<CharactersInfoType> = ({characters}) => {
                     </div>
                   </div>
               ))}
-            </div> 
+            </div> }
 
             <Paginations onHandleChange={onHandleChange} page={currentPage} allPage={allPage}/>
     </>
