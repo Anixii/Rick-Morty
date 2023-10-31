@@ -18,7 +18,8 @@ import { getCharacters } from "./utils/characterFunctions";
 export const revalidate = 0;
 export const dynamic = 'force-dynamic';
 
-export default async function Home() { 
+export default async function Home() {  
+  const data = await getCharacters()
   return (
     <>
       <div className={s.characters__wrapper}>
@@ -27,7 +28,7 @@ export default async function Home() {
             <div className={s.characters__img}>
               <Image className={s.image} alt="Rick&Morty Icon" src={icon} />
             </div>
-            <CharactersInfo /> 
+            <CharactersInfo characters={data}/> 
           </main>
         </div>
       </div>

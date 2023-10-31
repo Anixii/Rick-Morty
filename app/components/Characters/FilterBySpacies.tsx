@@ -15,7 +15,7 @@ type OptionType = {
 const FilterBySpacies:FC<FilterType> = ({defaultValue, options, onSelectChange,value}) => {
   return (
     <> 
-    <Select allowClear={true} onChange={onSelectChange} value={value} defaultValue={defaultValue} options={options} className={s.select__filter}/>
+    <Select onChange={onSelectChange} value={value} defaultValue={defaultValue} options={options} className={s.select__filter}/>
     </>
   )
 }

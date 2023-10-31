@@ -1,28 +1,30 @@
 'use client'
 import Image from 'next/image'
-import React, { FC, use, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 import Filter from './FilterBySpacies'
 import FilterByName from './FilterByName' 
 import s from '../../Charackters.module.css'   
 import {genderOptions,  spaciesOption, statusOptions} from '../../utils/options'
 import Paginations from './Pagination'
-import { getCharacters, getFilteredCharaters } from '@/app/utils/characterFunctions'
-// type CharactersInfoType = { 
-//   characters: Array<Charackter>, 
-//   allPage: number
-// }
-const CharactersInfo:FC = () => { 
-  const [character, setCharacter] = useState<Array<Charackter>>(characters) 
-  const [filteredCharacter, setFilteredCharacter] = useState<Array<Charackter>>(characters)
+import {getFilteredCharaters } from '@/app/utils/characterFunctions'
+type CharactersInfoType = { 
+  characters: TResponse<Charackter>, 
+}
+const CharactersInfo:FC<CharactersInfoType> = ({characters}) => { 
+  const [character, setCharacter] = useState<Array<Charackter>>(characters.results) 
+  const [filteredCharacter, setFilteredCharacter] = useState<Array<Charackter>>(characters.results)
   const [currentPage, setCurrentPage] = useState<number>(1) 
   const [nameValue, setNameValue] = useState<string>('')
   const [gender, setGender] = useState<string>('Gender')
   const [spacies, setSpacies] = useState<string>('Species')
-  const [status, setStatus] = useState<string>('Status')
+  const [status, setStatus] = useState<string>('Status') 
+  const [allPage, setAllPage] = useState(characters.info.pages)
   const onHandleChange = async(e:number) =>{ 
-    setCurrentPage(e)
+    setCurrentPage(e) 
     const data = await getFilteredCharaters(e.toString(), status,spacies,gender, nameValue)  
-    setFilteredCharacter(data.results)
+    setFilteredCharacter(data.results) 
+    setCharacter(data.results) 
+    setAllPage(data.info.pages)
     window.scrollTo(0,0)
   } 
   const onHandleFilterByName = (e:any) =>{  
@@ -33,22 +35,31 @@ const CharactersInfo:FC = () => {
   
   const onHandleSelectChangeSpecias = async(label:string,) =>{  
     setSpacies(label)
-    const data = await getFilteredCharaters(currentPage.toString(), status,label,gender, nameValue)  
+    const data = await getFilteredCharaters("1", status,label,gender, nameValue)  
     setFilteredCharacter(data.results)
-    setCharacter(data.results)
+    setCharacter(data.results) 
+    setAllPage(data.info.pages) 
+    setCurrentPage(1)
+
   }
   const onHandleSelectChangeGender = async(label:string,) =>{  
     setGender(label)
-    const data = await getFilteredCharaters(currentPage.toString(), status,spacies,label,nameValue)  
+    const data = await getFilteredCharaters('1', status,spacies,label,nameValue)  
     setFilteredCharacter(data.results)
-    setCharacter(data.results)
+    setCharacter(data.results) 
+    setCurrentPage(1)
+
+    setAllPage(data.info.pages)
   }
   const onHandleSelectChangeStatus = async(label:string,) =>{  
     setStatus(label)
-    const data = await getFilteredCharaters(currentPage.toString(), label,spacies,gender,nameValue)  
+    const data = await getFilteredCharaters("1", label,spacies,gender,nameValue)  
     setFilteredCharacter(data.results)
-    setCharacter(data.results)
-  }
+    setCharacter(data.results) 
+    setCurrentPage(1)
+    setAllPage(data.info.pages)
+  } 
+
   return (
     <> 
     <div className={s.characters__search}>

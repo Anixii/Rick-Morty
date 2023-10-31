@@ -1,5 +1,5 @@
-export const getCharacters = async (page:number) =>{ 
-    const res = await fetch(`https://rickandmortyapi.com/api/character/?page=${page}`, {
+export const getCharacters = async () =>{ 
+    const res = await fetch(`https://rickandmortyapi.com/api/character/`, {
       next: {
         revalidate: 0,
       }, 
@@ -15,7 +15,7 @@ export const getCharacters = async (page:number) =>{
   }  
   export const getFilteredCharaters = async (page: string,status: string, spacies:string, gender: string,name:string ) =>{  
     const res = await fetch(`https://rickandmortyapi.com/api/character/? 
-    ${page === '' ? "" : `page=${page}`} 
+    ${page === '' ? "" : `&page=${page}`} 
     ${gender === 'Gender' ? "" : `&gender=${gender}`} 
     ${spacies === 'Species' ? "" : `&species=${spacies}`}
     ${status === 'Status' ? "" : `&status=${status}`}
