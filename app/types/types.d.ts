@@ -18,9 +18,9 @@ type Charackter = {
     type: string, 
     gender: string, 
     origin: TLocation, 
-    locations: TLocation, 
+    location: TLocation, 
     image: string, 
-    episode: Array<TEpisode>
+    episode: Array<string>
     created: string
 } 
 type TLocation = { 
@@ -31,11 +31,11 @@ type TLocation = {
     residents: Array<Charackter> 
     created: string
 } 
-type Episode = { 
+type Episode = {
     id: string | number, 
     name: string,   
     air_date: string 
-    Episode:string 
+    episode:string 
     character: Array<Charackter> 
     created: string
 } 

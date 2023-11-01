@@ -8,6 +8,7 @@ import {genderOptions,  spaciesOption, statusOptions} from '../../utils/options'
 import Paginations from './Pagination'
 import {getFilteredCharaters } from '@/app/utils/characterFunctions'
 import NoData from './NoData'
+import Link from 'next/link'
 type CharactersInfoType = { 
   characters: TResponse<Charackter>, 
 }
@@ -79,8 +80,8 @@ const CharactersInfo:FC<CharactersInfoType> = ({characters}) => {
 
             {filteredCharacter === undefined || filteredCharacter.length === 0 ? <NoData/> : <div className={s.characters__list}>
               {filteredCharacter?.map((item, index) => (
-
-                  <div key={index.toString() + item.id} className={s.character}>
+                <div key={index.toString() + item.id} className={s.character}>
+                    <Link href={`/character/${item.id}`}> 
                     <div className={s.character__img}>
                       <Image
                         width={200}
@@ -96,6 +97,7 @@ const CharactersInfo:FC<CharactersInfoType> = ({characters}) => {
                         {item.status} - {item.species}
                       </div>
                     </div>
+              </Link>
                   </div>
               ))}
             </div> }
