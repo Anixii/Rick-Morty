@@ -103,7 +103,7 @@
   font-weight: 600;
 }
 .characters__pagination {
-  margin: 0 0 6% 0;
+  margin: 4% 0 6% 0;
 }
 @media screen and (max-width: 1440px) {
   .character__name {
@@ -221,5 +221,12 @@
   .characters__filter { 
     margin-bottom: 15px;
     width: 100%;
+  }
+}
+ 
+@media screen and (max-width:365px) {
+  .characters__pagination > ul > li{ 
+    min-width: 24px !important; 
+    min-height: 24px !important;
   }
 }

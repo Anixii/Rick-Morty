@@ -1,6 +1,6 @@
 'use client'
 import React, { FC } from 'react'
-import s from '../../Charackters.module.css'  
+import s from '../Charackters.module.css'  
 import { Pagination } from 'antd'
 type PaginationType = { 
     page: number, 

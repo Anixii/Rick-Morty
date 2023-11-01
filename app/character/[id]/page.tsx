@@ -55,7 +55,6 @@ const DefineCharacter: FC<defineCharacterType> = async ({ params }) => {
   } else if (typeof episode === 'object' && episode !== null) {
     episodeArray.push(episode)
   } 
-  console.log(episode);
   
   return (
     <>
@@ -116,7 +115,7 @@ const DefineCharacter: FC<defineCharacterType> = async ({ params }) => {
                   <div key={index} className={s.info__row_arrow}>
                     <div className={s.arrow__text}>
                       <div className={s.row__title}>{item.episode}</div>
-                      <div className={s.row__subtitle}>{item.name}</div>
+                      <div className={s.row__subtitle}>{item.air_date}</div>
                       <div className={s.row__date}>{item.air_date}</div>
                     </div>
                     <div className={s.arrow}><svg

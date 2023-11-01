@@ -1,0 +1,118 @@
+.episode__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.episodes {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.episode__img {
+  padding: 90px 0 15px 0;
+}
+.episode__search { 
+    width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.episode__filter {
+  width: 55%;
+}
+.episode__list { 
+    margin-top: 6%;
+  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-content: space-between;
+}
+.episode__card { 
+  padding: 25px 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 6px;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  flex-direction: column;
+}
+
+.card__title {
+  color: var(--black-high-emphasis, rgba(0, 0, 0, 0.87));
+  text-align: center;
+  /* H6 - med 20 (30px, 0.15px) */
+  font-family: "Karla", sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px; /* 150% */
+  letter-spacing: 0.15px;
+}
+.card__subtitle {
+  font-family: "Karla", sans-serif;
+  color: var(--black-medium-emphasis, rgba(0, 0, 0, 0.6));
+  text-align: center;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px; /* 150% */
+  letter-spacing: 0.25px;
+}
+.card__date {
+  font-family: "Karla", sans-serif;
+  color: var(--black-medium-emphasis, rgba(0, 0, 0, 0.6));
+  text-align: center;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 21px; /* 150% */
+  letter-spacing: 0.25px;
+}
+@media screen and (max-width: 840px) {
+      /* .episode__filter {
+        width: 55%;
+      } */
+      .episode__list { 
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .card__title {
+        font-size: 19px;
+        line-height: 30px; /* 150% */
+      }
+      .card__subtitle {
+        font-size: 14px;
+        line-height: 21px;
+      }
+      .card__date {
+        font-size: 14px;
+        line-height: 21px; /* 150% */
+      }
+}
+@media screen and (max-width: 580px) {
+      .episode__filter {
+        width: 75%;
+      }
+      .episode__list { 
+        grid-template-columns: 1fr 1fr;
+      }
+}
+@media screen and (max-width: 480px) {
+      .episode__filter {
+        width: 100%;
+      }
+      .episode__list { 
+        grid-template-columns: 1fr;
+      }
+      .card__title {
+        font-size: 20px;
+        line-height: 30px; /* 150% */
+      }
+      .card__subtitle {
+        font-size: 14px;
+        line-height: 21px;
+      }
+      .card__date {
+        font-size: 14px;
+        line-height: 21px; /* 150% */
+      }
+}
