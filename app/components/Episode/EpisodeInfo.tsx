@@ -15,7 +15,7 @@ const EpisodeInfo: FC<EpisodeInfoType> = ({ episodes }) => {
   const [currentPage, setCurrentPage] = useState(1) 
   const onHandleChange = async (e: any) => {  
     const newEpisode = episode.results.filter((c) =>
-      c.episode.toLowerCase().includes(e.target.value.toLowerCase())
+      c.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilteredEpisode(newEpisode) 
   }
@@ -32,7 +32,7 @@ const EpisodeInfo: FC<EpisodeInfoType> = ({ episodes }) => {
         <div className={s.episode__search}>
           <div className={s.episode__filter}>
             <FilterByName
-              placeholder="Filter by name or episode (ex. S01 or S01E02)"
+              placeholder="Filter by name"
               onHandleChange={onHandleChange}
             />
           </div>
