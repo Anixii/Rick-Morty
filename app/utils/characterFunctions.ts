@@ -54,6 +54,17 @@ export const getLocations = async () =>{
     const data:TResponse<Episode> = await res.json()  
     return data
   }
+  export const getFilteredLocations = async (page: any,) =>{  
+    const res = await fetch(`https://rickandmortyapi.com/api/location/? 
+    ${page === '' ? "" : `&page=${page}`} 
+    `, {
+      next: {
+        revalidate: 0,
+      }, 
+    }) 
+    const data:TResponse<TLocation> = await res.json()  
+    return data
+  }
   export const getFilteredCharaters = async (page: string,status: string, spacies:string, gender: string,name:string ) =>{  
     const res = await fetch(`https://rickandmortyapi.com/api/character/? 
     ${page === '' ? "" : `&page=${page}`} 

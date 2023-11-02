@@ -1,0 +1,27 @@
+.locations__wrapper{ 
+    padding-top:90px ;
+    display: flex; 
+    justify-content: center;
+} 
+.locations__img{ 
+    display: flex;
+    justify-content: center;
+}
+.image{  
+    width: 360px; 
+    height: auto;
+} 
+.locations{ 
+    display: flex; 
+    flex-direction: column; 
+} 
+@media screen and (max-width: 430px) {
+    .image{ 
+        width: 310px;
+    }
+}
+@media screen and (max-width: 310px) {
+    .image{ 
+        width: 260px;
+    }
+}

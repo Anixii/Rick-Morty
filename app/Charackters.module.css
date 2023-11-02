@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} 
 .define__container {
   padding-top: 100px;
 }
@@ -130,7 +130,9 @@
   font-size: 34px;
   font-weight: 600;
 }
-.characters__pagination {
+.characters__pagination { 
+  display: flex; 
+  justify-content: center;
   margin: 4% 0 6% 0;
 }
 .define__title {

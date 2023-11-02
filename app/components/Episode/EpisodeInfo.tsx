@@ -13,11 +13,9 @@ const EpisodeInfo: FC<EpisodeInfoType> = ({ episodes }) => {
   const [episode, setEpisode] = useState(episodes)
   const [filteredEpisode, setFilteredEpisode] = useState<Array<Episode>>(episodes.results);
   const [currentPage, setCurrentPage] = useState(1) 
-  const [name, setName] = useState('')
   const onHandleChange = async (e: any) => {  
-    setName(e.target.value) 
     const newEpisode = episode.results.filter((c) =>
-      c.episode.toLowerCase().includes(name.toLowerCase())
+      c.episode.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setFilteredEpisode(newEpisode) 
   }

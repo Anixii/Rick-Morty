@@ -45,7 +45,7 @@ const CharactersInfo: FC<CharactersInfoType> = ({ characters }) => {
   };
   const onHandleFilterByName = (e: any) => {
     const newCharakters = character.filter((c) =>
-      c.name.toLowerCase().includes(nameValue.toLowerCase())
+      c.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setNameValue(e.target.value);
     setFilteredCharacter(newCharakters);
