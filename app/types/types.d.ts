@@ -36,7 +36,7 @@ type Episode = {
     name: string,   
     air_date: string 
     episode:string 
-    character: Array<Charackter> 
+    characters: Array<string> 
     created: string
 } 
 type CharackterParamsFilter = { 

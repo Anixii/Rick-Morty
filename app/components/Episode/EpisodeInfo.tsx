@@ -47,7 +47,7 @@ const EpisodeInfo: FC<EpisodeInfoType> = ({ episodes }) => {
             <Link
               className={s.episode__card}
               key={index}
-              href={`/character/${item.id}`}
+              href={`/episodes/${item.id}`}
             >
                 <div className={s.card__title}>{item.name}</div>
                 <div className={s.card__subtitle}>{item.episode}</div>

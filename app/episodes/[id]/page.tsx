@@ -1,0 +1,118 @@
+import React, { FC } from "react";
+import s from '../../Charackters.module.css'
+import Image from "next/image";
+import Link from "next/link";
+interface defineCharacterType {
+  params: {
+    id: string | number;
+  };
+}
+async function getData(id: string | number) {
+  const res = await fetch(`https://rickandmortyapi.com/api/episode/${id}`, {
+    next: {
+      revalidate: 60,
+    },
+  });
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+  return await res.json();
+}
+async function getAllCharacters(params: Array<string>) {
+  const res = await fetch(`https://rickandmortyapi.com/api/character/${params}`, {
+    next: {
+      revalidate: 60,
+    },
+  }); 
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+  return await res.json();
+} 
+export async function generateStaticParams() {
+  const character: TResponse<Charackter> = await fetch(
+    `https://rickandmortyapi.com/api/episode/`
+  ).then((res) => res.json());
+
+  return character.results.map((post) => ({
+    id: post.id.toString(),
+  }));
+}
+const DefineCharacter: FC<defineCharacterType> = async ({ params }) => {
+  const data: Episode = await getData(params.id); 
+  console.log(data);
+  
+  const filteredEpisode = data.characters
+  const episodeIds = [];  
+  for (const link of filteredEpisode) {
+    const parts = link.split("/");
+    const lastPart = parts[parts.length - 1];
+    episodeIds.push(lastPart);
+  }
+  const episode = await getAllCharacters(episodeIds)  
+  let episodeArray = [];
+  if (Array.isArray(episode)) {
+    episodeArray = episode
+  } else if (typeof episode === 'object' && episode !== null) {
+    episodeArray.push(episode)
+  } 
+  console.log(episode);
+  
+  return (
+      <>
+        <div className={s.define__container}>
+      <div className={'container'}>
+          <div className={s.define__title}>{data.name}</div>
+            <div className={s.define__info}>
+                 <div className={s.define__text}>
+                    <div className={s.define__parag}>Episode</div>
+                    <div className={s.define__subtitle}>{data.episode}</div>
+                 </div>
+                 <div className={s.define__text}>
+                    <div className={s.define__parag}>Date</div>
+                    <div className={s.define__subtitle}>{data.air_date}</div>
+                 </div>
+            </div>
+            <div className={s.define__subitem}>Cast</div>
+          <div className={s.characters__list}>
+          {episodeArray.map((item, index) => (
+            <div key={index.toString() + item.id} className={s.character}>
+              <Link href={`/character/${item.id}`}>
+                <div className={s.character__img}>
+                  <Image
+                    width={200}
+                    height={200}
+                    alt={item.name}
+                    src={item.image}
+                  />
+                </div>
+                <div className={s.character__text}>
+                  <div className={s.character__name}>{item.name}</div>
+                  <div className={s.character__status}>
+                    <div
+                      className={s.character__indicator}
+                      style={
+                        item.status === "Alive"
+                          ? { backgroundColor: "green" }
+                          : item.status === "Dead"
+                          ? { backgroundColor: "red" }
+                          : { backgroundColor: "gray" }
+                      }
+                    ></div>
+                    {item.status} - {item.species}
+                  </div>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
+
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default DefineCharacter;
