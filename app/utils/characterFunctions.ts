@@ -28,6 +28,21 @@ export const getEpisodes = async () =>{
     
     return data
   }   
+export const getLocations = async () =>{ 
+    const res = await fetch(`https://rickandmortyapi.com/api/location/`, {
+      next: {
+        revalidate: 0,
+      }, 
+       
+    });
+    
+    if (!res.ok) {
+      return 'No data'
+    } 
+    const data = await res.json() 
+    
+    return data
+  }   
   export const getFilteredEpisode = async (page: any,) =>{  
     const res = await fetch(`https://rickandmortyapi.com/api/episode/? 
     ${page === '' ? "" : `&page=${page}`} 

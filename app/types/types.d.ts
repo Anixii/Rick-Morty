@@ -17,8 +17,14 @@ type Charackter = {
     species:string, 
     type: string, 
     gender: string, 
-    origin: TLocation, 
-    location: TLocation, 
+    origin: { 
+        name: string 
+        url:string
+    }, 
+    location: { 
+        name: string
+        url:string
+    }, 
     image: string, 
     episode: Array<string>
     created: string
@@ -28,7 +34,7 @@ type TLocation = {
     name: string,  
     type: string, 
     dimension: string, 
-    residents: Array<Charackter> 
+    residents: Array<string> 
     created: string
 } 
 type Episode = {
