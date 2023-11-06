@@ -5,6 +5,11 @@ import s from './Episode.module.css'
 import EpisodeInfo from "../components/Episode/EpisodeInfo";
 export const revalidate = 0;
 export const dynamic = 'force-dynamic';
+export const generateMetadata = async() =>{ 
+  return{ 
+        title: 'Rick&Morty Episodes'
+    }
+}
 export default async function Home() {  
   let data:TResponse<Episode> = await getEpisodes() 
 

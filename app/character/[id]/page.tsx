@@ -20,6 +20,12 @@ async function getData(id: string | number) {
   }
   return await res.json();
 }
+export const generateMetadata = async({params}:any) =>{ 
+  const post:Charackter = await getData(params.id)   
+  return{ 
+        title:post.name
+    }
+}
 async function getCharacterEpisode(params: Array<string>) {
   const res = await fetch(`https://rickandmortyapi.com/api/episode/${params}`, {
     next: {

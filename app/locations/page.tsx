@@ -4,7 +4,13 @@ import s from "./Location.module.css";
 import Image from "next/image";
 import { getLocations } from "../utils/characterFunctions";
 import LocationInfo from "../components/Locations/LocationInfo";
-const Locations: FC = async () => {
+export const generateMetadata = async() =>{ 
+  return{ 
+        title: 'Rick&Morty Locations'
+    }
+}
+const Locations: FC = async () => { 
+  
   const data = await getLocations();
   return (
     <>

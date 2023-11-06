@@ -39,6 +39,12 @@ export async function generateStaticParams() {
   return character.results.map((post) => ({
     id: post.id.toString(),
   }));
+} 
+export const generateMetadata = async({params}:any) =>{ 
+  const post:Episode = await getData(params.id)   
+  return{ 
+        title:post.name
+    }
 }
 const DefineCharacter: FC<defineCharacterType> = async ({ params }) => {
   const data: Episode = await getData(params.id); 
