@@ -42,7 +42,6 @@ export async function generateStaticParams() {
 }
 const DefineCharacter: FC<defineCharacterType> = async ({ params }) => {
   const data: Episode = await getData(params.id); 
-  console.log(data);
   
   const filteredEpisode = data.characters
   const episodeIds = [];  
@@ -58,7 +57,6 @@ const DefineCharacter: FC<defineCharacterType> = async ({ params }) => {
   } else if (typeof episode === 'object' && episode !== null) {
     episodeArray.push(episode)
   } 
-  console.log(episode);
   
   return (
       <>
